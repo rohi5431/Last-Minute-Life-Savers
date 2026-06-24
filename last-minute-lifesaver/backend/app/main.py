@@ -1,3 +1,5 @@
+import asyncio
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
@@ -9,10 +11,27 @@ from app.core.security import decode_access_token
 from app.events.websocket_manager import ws_manager
 import logging
 
+logger = logging.getLogger(__name__)
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Start the Redis WebSocket pub/sub listener in the background
+    pubsub_task = asyncio.create_task(ws_manager.start_pubsub_listener())
+    yield
+    # Clean up the listener task on shutdown
+    pubsub_task.cancel()
+    try:
+        await pubsub_task
+    except asyncio.CancelledError:
+        pass
+
+
 app = FastAPI(
     title="Last-Minute Life Saver",
     description="AI-powered deadline management system",
     version="1.0.0",
+    lifespan=lifespan,
 )
 
 app.add_middleware(

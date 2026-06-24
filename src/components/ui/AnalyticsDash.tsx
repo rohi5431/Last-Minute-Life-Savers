@@ -1,32 +1,53 @@
 import { motion } from 'framer-motion'
-import { AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import { AreaChart, Area, PieChart, Pie, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { TrendingUp, Clock, Target, Zap } from 'lucide-react'
 import GlassCard from './GlassCard'
-
-const areaData = [
-  { name: 'Mon', tasks: 4, hours: 5 },
-  { name: 'Tue', tasks: 3, hours: 4 },
-  { name: 'Wed', tasks: 5, hours: 6 },
-  { name: 'Thu', tasks: 4, hours: 5 },
-  { name: 'Fri', tasks: 6, hours: 7 },
-  { name: 'Sat', tasks: 2, hours: 2 },
-  { name: 'Sun', tasks: 3, hours: 3 },
-]
-
-const priorityData = [
-  { name: 'High', value: 35, color: '#ef4444' },
-  { name: 'Medium', value: 45, color: '#f59e0b' },
-  { name: 'Low', value: 20, color: '#06b6d4' },
-]
-
-const stats = [
-  { icon: Target, label: 'Completion Rate', value: '87%', trend: '+5%', color: 'text-emerald-400' },
-  { icon: Clock, label: 'Focus Time', value: '24.5h', trend: '+2h', color: 'text-cyan-400' },
-  { icon: TrendingUp, label: 'Productivity', value: '92/100', trend: '+8', color: 'text-violet-400' },
-  { icon: Zap, label: 'Streak', value: '7 days', trend: 'New!', color: 'text-amber-400' },
-]
+import { useTasks } from '../../context/TaskContext'
 
 export default function AnalyticsDash() {
+  const { tasks, analytics: analyticsData } = useTasks()
+
+  // Calculate real metrics
+  const completionRate = analyticsData?.completionRate ?? 0
+  const focusMinutes = tasks.filter(t => t.status === 'completed').reduce((sum, t) => sum + (t.duration || 0), 0)
+  const focusHours = (focusMinutes / 60).toFixed(1) + 'h'
+  const productivity = analyticsData?.productivity ?? 0
+  const streak = analyticsData?.streak ?? 0
+
+  const stats = [
+    { icon: Target, label: 'Completion Rate', value: `${completionRate}%`, trend: completionRate > 50 ? '+5%' : 'Keep it up!', color: 'text-emerald-400' },
+    { icon: Clock, label: 'Focus Time', value: focusHours, trend: focusMinutes > 0 ? 'Active' : 'No time yet', color: 'text-cyan-400' },
+    { icon: TrendingUp, label: 'Productivity', value: `${productivity}/100`, trend: `Score`, color: 'text-violet-400' },
+    { icon: Zap, label: 'Streak', value: `${streak} days`, trend: streak > 0 ? 'Active!' : 'Start today!', color: 'text-amber-400' },
+  ]
+
+  // Calculate weekly activity dynamically
+  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  const areaData = daysOfWeek.map((dayName, idx) => {
+    const completedOnDay = tasks.filter(t => {
+      if (!t.completed_at) return false
+      const d = new Date(t.completed_at)
+      return d.getDay() === idx
+    })
+    const mins = completedOnDay.reduce((sum, t) => sum + (t.duration || 0), 0)
+    return {
+      name: dayName,
+      tasks: completedOnDay.length,
+      hours: Math.round((mins / 60) * 10) / 10
+    }
+  })
+
+  // Calculate task distribution by priority
+  const highTasks = tasks.filter(t => t.priority === 'high').length
+  const mediumTasks = tasks.filter(t => t.priority === 'medium').length
+  const lowTasks = tasks.filter(t => t.priority === 'low').length
+  const totalWithPriority = highTasks + mediumTasks + lowTasks
+
+  const priorityData = [
+    { name: 'High', value: totalWithPriority > 0 ? Math.round((highTasks / totalWithPriority) * 100) : 0, color: '#ef4444' },
+    { name: 'Medium', value: totalWithPriority > 0 ? Math.round((mediumTasks / totalWithPriority) * 100) : 0, color: '#f59e0b' },
+    { name: 'Low', value: totalWithPriority > 0 ? Math.round((lowTasks / totalWithPriority) * 100) : 0, color: '#06b6d4' },
+  ]
   return (
     <div className="space-y-6">
       {/* Stats Grid */}

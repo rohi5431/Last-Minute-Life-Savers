@@ -1,39 +1,38 @@
 """Event dispatcher.
 
-Provides a single `dispatch_user_event` entry point that other modules
-(API handlers, services, Celery workers) call to push realtime updates to a
-specific user over WebSocket. Runs the coroutine on the running event loop
-when called from async context, and spawns a thread-safe task when called
-from a sync context (e.g. Celery worker threads).
+Provides a unified interface for API handlers, services, and Celery workers
+to push real-time updates to users. Publishes events to a Redis Pub/Sub channel
+so that all running FastAPI/Uvicorn processes receive the event and push
+them over their active WebSocket connections.
 """
-import asyncio
+import json
 import logging
-from typing import Any, Dict, Optional
-
-from app.events.websocket_manager import ws_manager
+from typing import Any, Dict
+import redis
+from app.config import settings
 
 logger = logging.getLogger(__name__)
 
+# Re-use connection pool for efficiency across requests/tasks
+redis_pool = redis.ConnectionPool.from_url(settings.REDIS_URL, decode_responses=True)
+
 
 def dispatch_user_event(user_id: int, event_type: str, payload: Dict[str, Any]) -> None:
-    """Fire-and-forget push of an event to a user's websocket connections."""
+    """Publish an event to the Redis 'lmls_events' channel.
+
+    This is sync-safe, thread-safe, and extremely fast. It operates
+    seamlessly in both async FastAPI route contexts and sync Celery worker threads.
+    """
     message = {"type": event_type, "payload": payload}
+    envelope = {
+        "user_id": int(user_id) if user_id is not None else None,
+        "message": message
+    }
     try:
-        loop = asyncio.get_running_loop()
-        loop.create_task(ws_manager.send_personal(user_id, message))
-    except RuntimeError:
-        # No running loop (e.g. called from a Celery worker thread).
-        # Spin up a short-lived loop to flush the message.
-        try:
-            new_loop = asyncio.new_event_loop()
-            try:
-                new_loop.run_until_complete(ws_manager.send_personal(user_id, message))
-            finally:
-                new_loop.close()
-        except Exception as e:
-            logger.warning(f"dispatch_user_event fallback failed: {e}")
+        client = redis.Redis(connection_pool=redis_pool)
+        client.publish("lmls_events", json.dumps(envelope, default=str))
     except Exception as e:
-        logger.warning(f"dispatch_user_event failed: {e}")
+        logger.error(f"Failed to publish event to Redis: {e}")
 
 
 def dispatch_notification(user_id: int, notification: Dict[str, Any]) -> None:

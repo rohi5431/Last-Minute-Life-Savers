@@ -8,12 +8,15 @@ import GlassCard from '../components/ui/GlassCard'
 import AnimatedButton from '../components/ui/AnimatedButton'
 import AnimatedInput from '../components/ui/AnimatedInput'
 import { LoadingOverlay } from '../components/ui/LoadingSpinner'
+import { useAuth } from '../context/AuthContext'
 
 export default function LoginPage() {
   const navigate = useNavigate()
+  const { login } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({})
+  const [apiError, setApiError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
   const validate = () => {
@@ -37,13 +40,15 @@ export default function LoginPage() {
     if (!validate()) return
 
     setLoading(true)
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500))
-
-    // Mock login - in real app, this would call your auth API
-    localStorage.setItem('token', 'mock-jwt-token')
-    setLoading(false)
-    navigate('/dashboard')
+    setApiError(null)
+    try {
+      await login(email, password)
+      setLoading(false)
+      navigate('/dashboard')
+    } catch (err: any) {
+      setLoading(false)
+      setApiError(err.friendlyMessage || 'Invalid email or password.')
+    }
   }
 
   return (
@@ -76,6 +81,11 @@ export default function LoginPage() {
         {/* Login Card */}
         <GlassCard>
           <form onSubmit={handleSubmit} className="p-6 lg:p-8 space-y-5">
+            {apiError && (
+              <div className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-xl px-4 py-3">
+                {apiError}
+              </div>
+            )}
             <AnimatedInput
               label="Email"
               type="email"

@@ -8,9 +8,11 @@ import GlassCard from '../components/ui/GlassCard'
 import AnimatedButton from '../components/ui/AnimatedButton'
 import AnimatedInput from '../components/ui/AnimatedInput'
 import { LoadingOverlay } from '../components/ui/LoadingSpinner'
+import { useAuth } from '../context/AuthContext'
 
 export default function SignupPage() {
   const navigate = useNavigate()
+  const { signup } = useAuth()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,6 +20,7 @@ export default function SignupPage() {
     confirmPassword: '',
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const [apiError, setApiError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
   const passwordStrength = () => {
@@ -67,11 +70,15 @@ export default function SignupPage() {
     if (!validate()) return
 
     setLoading(true)
-    await new Promise(resolve => setTimeout(resolve, 2000))
-
-    localStorage.setItem('token', 'mock-jwt-token')
-    setLoading(false)
-    navigate('/dashboard')
+    setApiError(null)
+    try {
+      await signup(formData.email, formData.password)
+      setLoading(false)
+      navigate('/dashboard')
+    } catch (err: any) {
+      setLoading(false)
+      setApiError(err.friendlyMessage || 'Registration failed. Try a different email.')
+    }
   }
 
   const handleChange = (field: string, value: string) => {
@@ -118,6 +125,11 @@ export default function SignupPage() {
         {/* Signup Card */}
         <GlassCard>
           <form onSubmit={handleSubmit} className="p-6 lg:p-8 space-y-5">
+            {apiError && (
+              <div className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-xl px-4 py-3">
+                {apiError}
+              </div>
+            )}
             <AnimatedInput
               label="Full Name"
               type="text"
