@@ -30,6 +30,7 @@ from app.models.task import Task  # noqa: E402
 from app.models.schedule import Schedule  # noqa: E402
 from app.models.notification import Notification  # noqa: E402
 from app.models.integration import CalendarToken, CalendarEvent  # noqa: E402
+from app.models.habit import Habit, HabitLog  # noqa: E402
 from app.utils.demo_data import build_demo_plan, DEMO_USER_EMAIL, DEMO_USER_PASSWORD  # noqa: E402
 
 
@@ -68,6 +69,10 @@ def _wipe_demo_user_data(db, user: User) -> None:
     db.query(Schedule).filter(Schedule.user_id == user.id).delete()
     db.query(CalendarEvent).filter(CalendarEvent.user_id == user.id).delete()
     db.query(CalendarToken).filter(CalendarToken.user_id == user.id).delete()
+    db.query(HabitLog).filter(HabitLog.habit_id.in_(
+        db.query(Habit.id).filter(Habit.user_id == user.id)
+    )).delete(synchronize_session=False)
+    db.query(Habit).filter(Habit.user_id == user.id).delete(synchronize_session=False)
     # Tasks reference goals; delete goals cascades to tasks via FK ondelete cascade,
     # but we still remove tasks explicitly to be safe across DBs.
     db.query(Task).filter(Task.goal_id.in_(
@@ -186,6 +191,30 @@ def seed() -> dict:
             notif_count += 1
 
         cal_count = _insert_demo_calendar_context(db, user)
+
+        # Seed habits
+        habits_data = [
+            ("Morning planning ritual", "daily", 5, now - timedelta(days=1)),
+            ("Review task priority matrix", "daily", 2, now),
+            ("Weekly calendar cleanup", "weekly", 12, now - timedelta(days=3))
+        ]
+        
+        for title, freq, streak, last_comp in habits_data:
+            habit = Habit(
+                user_id=user.id,
+                title=title,
+                frequency=freq,
+                streak=streak,
+                last_completed=last_comp,
+                created_at=now - timedelta(days=15)
+            )
+            db.add(habit)
+            db.flush()
+            
+            # Log completions
+            for d in range(streak):
+                comp_at = last_comp - timedelta(days=d)
+                db.add(HabitLog(habit_id=habit.id, completed_at=comp_at))
 
         db.commit()
         summary = {

@@ -4,6 +4,7 @@ import { forwardRef } from 'react'
 interface GlassCardProps extends HTMLMotionProps<'div'> {
   children: React.ReactNode
   className?: string
+  contentClassName?: string
   hover?: boolean
   glow?: 'purple' | 'blue' | 'cyan' | 'pink' | 'none'
 }
@@ -17,7 +18,7 @@ const glowColors = {
 }
 
 const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
-  ({ children, className = '', hover = true, glow = 'purple', ...props }, ref) => {
+  ({ children, className = '', contentClassName = '', hover = true, glow = 'purple', ...props }, ref) => {
     return (
       <motion.div
         ref={ref}
@@ -42,7 +43,7 @@ const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
             background: 'linear-gradient(135deg, rgba(139,92,246,0.1) 0%, transparent 50%, rgba(59,130,246,0.1) 100%)',
           }}
         />
-        <div className="relative z-10">{children}</div>
+        <div className={`relative z-10 ${contentClassName}`}>{children}</div>
       </motion.div>
     )
   }

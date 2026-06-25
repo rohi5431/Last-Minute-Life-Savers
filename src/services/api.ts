@@ -209,6 +209,39 @@ export const calendar = {
   disconnect: (): Promise<any> => api.post('/calendar/oauth/disconnect').then((r) => r.data),
 }
 
+// ---------- Habits ----------
+export interface Habit {
+  id: number
+  title: string
+  frequency: 'daily' | 'weekly'
+  streak: number
+  last_completed?: string
+}
+
+export const habits = {
+  list: (): Promise<Habit[]> => api.get('/habits/').then((r) => r.data),
+  create: (payload: { title: string; frequency?: string }): Promise<Habit> =>
+    api.post('/habits/', payload).then((r) => r.data),
+  complete: (id: number): Promise<Habit> => api.post(`/habits/${id}/complete`).then((r) => r.data),
+  remove: (id: number): Promise<any> => api.delete(`/habits/${id}`).then((r) => r.data),
+}
+
+// ---------- Productivity Recommendations & AI Assistant ----------
+export interface Recommendation {
+  id: string
+  tip: string
+  context: string
+  priority: 'high' | 'medium' | 'low'
+  created_at: string
+}
+
+export const productivity = {
+  getRecommendations: (): Promise<Recommendation[]> =>
+    api.get('/productivity/recommendations').then((r) => r.data),
+  askAssistant: (message: string): Promise<{ response: string; action_taken?: string }> =>
+    api.post('/productivity/assistant', { message }).then((r) => r.data),
+}
+
 export function computeAnalytics(goalList: Goal[], taskList: Task[]): AnalyticsData {
   const total = taskList.length
   const completed = taskList.filter(

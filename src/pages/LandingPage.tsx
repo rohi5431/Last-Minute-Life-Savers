@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { ArrowRight, Sparkles, Zap, Clock, Target, Brain, Shield, Users, Play, CheckCircle2, Mail, Linkedin, Github, Heart, ExternalLink } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowRight, Sparkles, Zap, Clock, Target, Brain, Shield, Users, Play, CheckCircle2, Mail, Linkedin, Github, Heart, ExternalLink, ChevronDown, ListTodo, Calendar } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import AnimatedBackground from '../components/ui/AnimatedBackground'
 import FloatingBlobs from '../components/ui/FloatingBlobs'
@@ -137,35 +137,58 @@ export default function LandingPage() {
   const [timeFrame, setTimeFrame] = useState('3h')
   const [isGenerating, setIsGenerating] = useState(false)
   const [generatedPlan, setGeneratedPlan] = useState<any[] | null>(null)
+  const [isFeaturesDropdownOpen, setIsFeaturesDropdownOpen] = useState(false)
+  const [sandboxStep, setSandboxStep] = useState(0)
+  const [sandboxLogs, setSandboxLogs] = useState<string[]>([])
 
   const handleRescue = (e: React.FormEvent) => {
     e.preventDefault()
     if (!goalInput.trim()) return
     setIsGenerating(true)
-    setTimeout(() => {
-      const parsedHours = parseFloat(timeFrame) || 3
-      setGeneratedPlan([
-        {
-          id: 1,
-          title: `Analyze & break down: ${goalInput.length > 28 ? goalInput.substring(0, 28) + '...' : goalInput}`,
-          duration: `${Math.round(parsedHours * 0.2 * 10) / 10}h`,
-          color: 'from-violet-500 to-indigo-500'
-        },
-        {
-          id: 2,
-          title: `Build core functionality of ${goalInput.length > 28 ? goalInput.substring(0, 28) + '...' : goalInput}`,
-          duration: `${Math.round(parsedHours * 0.55 * 10) / 10}h`,
-          color: 'from-cyan-500 to-blue-500'
-        },
-        {
-          id: 3,
-          title: `Final testing, layout polish & deployment`,
-          duration: `${Math.round(parsedHours * 0.25 * 10) / 10}h`,
-          color: 'from-emerald-500 to-teal-500'
-        }
-      ])
-      setIsGenerating(false)
-    }, 1200)
+    setSandboxStep(0)
+    setSandboxLogs(['[SYSTEM] Initiating Sandbox Agent Pipeline...'])
+
+    const stepLogs = [
+      '[CLARIFIER] Auditing goal specificity...',
+      '[PLANNER] Decomposing goal into actionable tasks...',
+      '[PRIORITIZER] Calculating dependency weights...',
+      '[SCHEDULER] Aligning slots with calendar availability...'
+    ]
+
+    let currentStep = 0
+    const runSandboxPipeline = () => {
+      if (currentStep < 4) {
+        setSandboxStep(currentStep)
+        setSandboxLogs(prev => [...prev, stepLogs[currentStep]])
+        currentStep++
+        setTimeout(runSandboxPipeline, 1000)
+      } else {
+        const parsedHours = parseFloat(timeFrame) || 3
+        setGeneratedPlan([
+          {
+            id: 1,
+            title: `Analyze & break down: ${goalInput.length > 28 ? goalInput.substring(0, 28) + '...' : goalInput}`,
+            duration: `${Math.round(parsedHours * 0.2 * 10) / 10}h`,
+            color: 'from-violet-500 to-indigo-500'
+          },
+          {
+            id: 2,
+            title: `Build core functionality of ${goalInput.length > 28 ? goalInput.substring(0, 28) + '...' : goalInput}`,
+            duration: `${Math.round(parsedHours * 0.55 * 10) / 10}h`,
+            color: 'from-cyan-500 to-blue-500'
+          },
+          {
+            id: 3,
+            title: `Final testing, layout polish & deployment`,
+            duration: `${Math.round(parsedHours * 0.25 * 10) / 10}h`,
+            color: 'from-emerald-500 to-teal-500'
+          }
+        ])
+        setIsGenerating(false)
+      }
+    }
+
+    setTimeout(runSandboxPipeline, 500)
   }
 
   return (
@@ -190,10 +213,73 @@ export default function LandingPage() {
               </motion.div>
 
               <div className="hidden md:flex items-center gap-8">
-                <a href="#features" className="text-sm text-slate-400 hover:text-white transition-colors">Features</a>
-                <a href="#how-it-works" className="text-sm text-slate-400 hover:text-white transition-colors">How it Works</a>
-                <a href="#testimonials" className="text-sm text-slate-400 hover:text-white transition-colors">Testimonials</a>
-                <a href="#faq" className="text-sm text-slate-400 hover:text-white transition-colors">FAQ</a>
+                <div
+                  className="relative py-2"
+                  onMouseEnter={() => setIsFeaturesDropdownOpen(true)}
+                  onMouseLeave={() => setIsFeaturesDropdownOpen(false)}
+                >
+                  <a
+                    href="#features"
+                    className="text-[15px] font-medium text-slate-400 hover:text-white transition-colors flex items-center gap-1"
+                  >
+                    Features
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isFeaturesDropdownOpen ? 'rotate-180' : ''}`} />
+                  </a>
+
+                  <AnimatePresence>
+                    {isFeaturesDropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 rounded-2xl border border-white/[0.08] bg-[#07070a]/95 backdrop-blur-xl p-4 shadow-xl z-50 grid grid-cols-1 gap-2"
+                      >
+                        <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider px-2 pb-1 border-b border-white/[0.05]">
+                          Core Platform Capabilities
+                        </div>
+                        <a href="#features" className="flex items-start gap-3 p-2 rounded-xl hover:bg-white/[0.03] transition-colors group">
+                          <div className="w-8 h-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 shrink-0">
+                            <Brain className="w-4.5 h-4.5" />
+                          </div>
+                          <div>
+                            <h4 className="text-xs font-semibold text-white group-hover:text-violet-400 transition-colors">AI Task Planning</h4>
+                            <p className="text-[10px] text-slate-500 mt-0.5">Decompose your complex goals into structured subtasks.</p>
+                          </div>
+                        </a>
+                        <a href="#features" className="flex items-start gap-3 p-2 rounded-xl hover:bg-white/[0.03] transition-colors group">
+                          <div className="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">
+                            <Clock className="w-4.5 h-4.5" />
+                          </div>
+                          <div>
+                            <h4 className="text-xs font-semibold text-white group-hover:text-cyan-400 transition-colors">Smart Scheduling</h4>
+                            <p className="text-[10px] text-slate-500 mt-0.5">Schedule tasks around calendar meetings automatically.</p>
+                          </div>
+                        </a>
+                        <a href="#features" className="flex items-start gap-3 p-2 rounded-xl hover:bg-white/[0.03] transition-colors group">
+                          <div className="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
+                            <Target className="w-4.5 h-4.5" />
+                          </div>
+                          <div>
+                            <h4 className="text-xs font-semibold text-white group-hover:text-amber-400 transition-colors">Priority Intelligence</h4>
+                            <p className="text-[10px] text-slate-500 mt-0.5">Automatic load scoring and deadline ranking.</p>
+                          </div>
+                        </a>
+                        <a href="#features" className="flex items-start gap-3 p-2 rounded-xl hover:bg-white/[0.03] transition-colors group">
+                          <div className="w-8 h-8 rounded-lg bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 shrink-0">
+                            <Zap className="w-4.5 h-4.5" />
+                          </div>
+                          <div>
+                            <h4 className="text-xs font-semibold text-white group-hover:text-pink-400 transition-colors">Focus Soundscapes</h4>
+                            <p className="text-[10px] text-slate-500 mt-0.5">Custom synthesized theta waves focus room.</p>
+                          </div>
+                        </a>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+                <a href="#how-it-works" className="text-[15px] font-medium text-slate-400 hover:text-white transition-colors">How it Works</a>
+                <a href="#testimonials" className="text-[15px] font-medium text-slate-400 hover:text-white transition-colors">Testimonials</a>
+                <a href="#faq" className="text-[15px] font-medium text-slate-400 hover:text-white transition-colors">FAQ</a>
               </div>
 
               <div className="flex items-center gap-3">
@@ -664,7 +750,63 @@ export default function LandingPage() {
                         <span className="text-xs font-semibold text-white tracking-wider uppercase">AI Planner Sandbox</span>
                       </div>
 
-                      {!generatedPlan ? (
+                      {isGenerating ? (
+                        <div className="space-y-4 animate-fade-in">
+                          <div className="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                            <span className="text-xs font-semibold text-cyan-400">Agent Pipeline Active</span>
+                            <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Step {sandboxStep + 1}/4</span>
+                          </div>
+
+                          {/* Nodes Track */}
+                          <div className="grid grid-cols-4 gap-2 py-2">
+                            {[
+                              { label: 'Clarifier', icon: Brain, step: 0 },
+                              { label: 'Planner', icon: ListTodo, step: 1 },
+                              { label: 'Prioritizer', icon: Zap, step: 2 },
+                              { label: 'Scheduler', icon: Calendar, step: 3 },
+                            ].map((node) => {
+                              const isActive = sandboxStep === node.step
+                              const isCompleted = sandboxStep > node.step
+                              const NodeIcon = node.icon
+                              return (
+                                <div key={node.label} className="flex flex-col items-center">
+                                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center border transition-all ${
+                                    isCompleted 
+                                      ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' 
+                                      : isActive 
+                                      ? 'bg-cyan-500/10 border-cyan-400 text-cyan-400 animate-pulse' 
+                                      : 'bg-white/[0.02] border-white/[0.05] text-slate-600'
+                                  }`}>
+                                    <NodeIcon className="w-4 h-4" />
+                                  </div>
+                                  <span className={`text-[9px] font-medium mt-1 ${
+                                    isActive ? 'text-cyan-400' : isCompleted ? 'text-emerald-400' : 'text-slate-600'
+                                  }`}>
+                                    {node.label}
+                                  </span>
+                                </div>
+                              )
+                            })}
+                          </div>
+
+                          {/* Terminal Logs Box */}
+                          <div className="bg-[#040406] border border-white/[0.05] rounded-xl p-3 h-28 overflow-y-auto font-mono text-[10px] space-y-1 scrollbar-none">
+                            {sandboxLogs.map((log, idx) => {
+                              let logColor = 'text-slate-400'
+                              if (log.includes('[CLARIFIER]')) logColor = 'text-amber-400'
+                              else if (log.includes('[PLANNER]')) logColor = 'text-cyan-400'
+                              else if (log.includes('[PRIORITIZER]')) logColor = 'text-fuchsia-400'
+                              else if (log.includes('[SCHEDULER]')) logColor = 'text-emerald-400'
+                              else if (log.includes('[SYSTEM]')) logColor = 'text-violet-400 font-semibold'
+                              return (
+                                <div key={idx} className={logColor}>
+                                  {log}
+                                </div>
+                              )
+                            })}
+                          </div>
+                        </div>
+                      ) : !generatedPlan ? (
                         <form onSubmit={handleRescue} className="space-y-4">
                           <div className="space-y-2">
                             <label className="text-xs text-slate-400 font-medium">What is your last-minute goal?</label>

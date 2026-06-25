@@ -59,14 +59,24 @@ class LLMClient:
     def call_json(self, prompt: str) -> Dict[str, Any]:
         response = self.call(prompt)
         try:
-            json_start = response.find("{")
-            json_end = response.rfind("}") + 1
-            if json_start >= 0 and json_end > json_start:
-                json_str = response[json_start:json_end]
-                return json.loads(json_str)
+            start_chars = ["{", "["]
+            json_start = -1
+            start_char_found = None
+            for idx, char in enumerate(response):
+                if char in start_chars:
+                    json_start = idx
+                    start_char_found = char
+                    break
+            
+            if json_start >= 0:
+                end_char = "}" if start_char_found == "{" else "]"
+                json_end = response.rfind(end_char) + 1
+                if json_end > json_start:
+                    json_str = response[json_start:json_end]
+                    return json.loads(json_str)
             return json.loads(response)
         except json.JSONDecodeError as e:
-            logger.error(f"Failed to parse JSON from LLM response: {e}")
+            logger.error(f"Failed to parse JSON from LLM response: {e}. Raw response: {response}")
             return {"error": "Failed to parse LLM response", "raw": response}
 
 

@@ -207,7 +207,7 @@ def check_endpoints(backend_url, demo_email, demo_password):
 
     def get(path):
         req = urllib.request.Request(f"{backend_url}{path}", headers=headers)
-        with urllib.request.urlopen(req, timeout=5) as resp:
+        with urllib.request.urlopen(req, timeout=15) as resp:
             return json.loads(resp.read().decode())
 
     checks = [
@@ -219,6 +219,8 @@ def check_endpoints(backend_url, demo_email, demo_password):
         ("/calendar/status", "calendar status"),
         ("/calendar/events", "calendar events"),
         ("/calendar/conflicts", "conflicts"),
+        ("/habits/", "habits"),
+        ("/productivity/recommendations", "productivity recommendations"),
     ]
     all_ok = True
     for path, label in checks:
@@ -234,6 +236,26 @@ def check_endpoints(backend_url, demo_email, demo_password):
             else:
                 _fail(f"GET {path}", text)
                 all_ok = False
+
+    # Test POST /productivity/assistant
+    try:
+        req = urllib.request.Request(
+            f"{backend_url}/productivity/assistant",
+            data=json.dumps({"message": "Hello, stay productive!"}).encode(),
+            headers={"Content-Type": "application/json", **headers},
+            method="POST"
+        )
+        with urllib.request.urlopen(req, timeout=5) as resp:
+            res_data = json.loads(resp.read().decode())
+            if "response" in res_data:
+                _ok("POST /productivity/assistant", f"OK: {res_data.get('response')[:30]}...")
+            else:
+                _fail("POST /productivity/assistant", "missing 'response' in output")
+                all_ok = False
+    except Exception as e:
+        _fail("POST /productivity/assistant", str(e))
+        all_ok = False
+
     return all_ok
 
 

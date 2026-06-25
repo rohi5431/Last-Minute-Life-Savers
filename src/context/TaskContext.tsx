@@ -5,12 +5,16 @@ import {
   schedule as apiSchedule,
   notifications as apiNotifications,
   analytics as apiAnalytics,
+  habits as apiHabits,
+  productivity as apiProductivity,
   Goal,
   Task,
   ScheduleItem,
   NotificationItem,
   AnalyticsData,
-  GoalPayload
+  GoalPayload,
+  Habit,
+  Recommendation
 } from '../services/api'
 
 interface TaskContextType {
@@ -18,6 +22,8 @@ interface TaskContextType {
   tasks: Task[]
   schedules: ScheduleItem[]
   notifications: NotificationItem[]
+  habits: Habit[]
+  recommendations: Recommendation[]
   analytics: AnalyticsData | null
   loading: boolean
   error: string | null
@@ -25,11 +31,16 @@ interface TaskContextType {
   refreshAll: () => Promise<void>
   refreshTasks: () => Promise<void>
   refreshNotifications: () => Promise<void>
+  refreshHabits: () => Promise<void>
+  refreshRecommendations: () => Promise<void>
   addGoal: (payload: GoalPayload) => Promise<Goal>
   removeGoal: (id: number) => Promise<void>
   getGoalPlan: (id: number) => Promise<any>
   updateTask: (id: number, patch: Partial<Task>) => Promise<Task>
   markNotificationRead: (id: number) => Promise<void>
+  addHabit: (title: string, frequency?: string) => Promise<Habit>
+  completeHabit: (id: number) => Promise<Habit>
+  removeHabit: (id: number) => Promise<void>
   handleLiveEvent: (evt: any) => void
 }
 
@@ -40,6 +51,8 @@ export function TaskProvider({ children }: { children: ReactNode }) {
   const [tasksList, setTasksList] = useState<Task[]>([])
   const [scheduleList, setScheduleList] = useState<ScheduleItem[]>([])
   const [notificationsList, setNotificationsList] = useState<NotificationItem[]>([])
+  const [habitsList, setHabitsList] = useState<Habit[]>([])
+  const [recommendationsList, setRecommendationsList] = useState<Recommendation[]>([])
   const [analyticsData, setAnalyticsData] = useState<AnalyticsData | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -49,16 +62,20 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     setLoading(true)
     setError(null)
     try {
-      const [g, t, s, n] = await Promise.all([
+      const [g, t, s, n, h, r] = await Promise.all([
         apiGoals.list(),
         apiTasks.list(),
         apiSchedule.list(),
         apiNotifications.list(),
+        apiHabits.list().catch(() => []),
+        apiProductivity.getRecommendations().catch(() => []),
       ])
       setGoalsList(g)
       setTasksList(t)
       setScheduleList(s)
       setNotificationsList(n)
+      setHabitsList(h)
+      setRecommendationsList(r)
       setAnalyticsData(apiAnalytics.computeAnalytics(g, t))
       loadedOnce.current = true
     } catch (e: any) {
@@ -82,6 +99,24 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     try {
       const n = await apiNotifications.list()
       setNotificationsList(n)
+    } catch {
+      /* noop */
+    }
+  }, [])
+
+  const refreshHabits = useCallback(async () => {
+    try {
+      const h = await apiHabits.list()
+      setHabitsList(h)
+    } catch {
+      /* noop */
+    }
+  }, [])
+
+  const refreshRecommendations = useCallback(async () => {
+    try {
+      const r = await apiProductivity.getRecommendations()
+      setRecommendationsList(r)
     } catch {
       /* noop */
     }
@@ -124,6 +159,24 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
+  // Habits
+  const addHabit = useCallback(async (title: string, frequency?: string) => {
+    const habit = await apiHabits.create({ title, frequency })
+    setHabitsList((prev) => [habit, ...prev])
+    return habit
+  }, [])
+
+  const completeHabit = useCallback(async (id: number) => {
+    const updated = await apiHabits.complete(id)
+    setHabitsList((prev) => prev.map((h) => (h.id === id ? updated : h)))
+    return updated
+  }, [])
+
+  const removeHabit = useCallback(async (id: number) => {
+    await apiHabits.remove(id)
+    setHabitsList((prev) => prev.filter((h) => h.id !== id))
+  }, [])
+
   // Live update handlers driven by WebSocket events.
   const handleLiveEvent = useCallback(
     (evt: any) => {
@@ -153,8 +206,6 @@ export function TaskProvider({ children }: { children: ReactNode }) {
           )
           break
         case 'reprioritized':
-          // Priority changes — refresh tasks + analytics so the board reflects
-          // new priorities without a manual reload.
           refreshTasks()
           break
         case 'refresh':
@@ -180,6 +231,8 @@ export function TaskProvider({ children }: { children: ReactNode }) {
       tasks: tasksList,
       schedules: scheduleList,
       notifications: notificationsList,
+      habits: habitsList,
+      recommendations: recommendationsList,
       analytics: analyticsData,
       loading,
       error,
@@ -187,17 +240,23 @@ export function TaskProvider({ children }: { children: ReactNode }) {
       refreshAll,
       refreshTasks,
       refreshNotifications,
+      refreshHabits,
+      refreshRecommendations,
       addGoal,
       removeGoal,
       getGoalPlan,
       updateTask,
       markNotificationRead,
+      addHabit,
+      completeHabit,
+      removeHabit,
       handleLiveEvent,
     }),
     [
-      goalsList, tasksList, scheduleList, notificationsList, analyticsData,
-      loading, error, refreshAll, refreshTasks, refreshNotifications,
-      addGoal, removeGoal, getGoalPlan, updateTask, markNotificationRead, handleLiveEvent,
+      goalsList, tasksList, scheduleList, notificationsList, habitsList, recommendationsList,
+      analyticsData, loading, error, refreshAll, refreshTasks, refreshNotifications,
+      refreshHabits, refreshRecommendations, addGoal, removeGoal, getGoalPlan, updateTask,
+      markNotificationRead, addHabit, completeHabit, removeHabit, handleLiveEvent,
     ]
   )
 

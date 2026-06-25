@@ -5,10 +5,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.api import (
     auth_router, goals_router, tasks_router, schedule_router,
-    notifications_router, integrations_router,
+    notifications_router, integrations_router, habits_router,
+    recommendations_router,
 )
 from app.core.security import decode_access_token
 from app.events.websocket_manager import ws_manager
+from app.database import Base, engine
 import logging
 
 logger = logging.getLogger(__name__)
@@ -16,6 +18,8 @@ logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    # Ensure all tables are created (useful for new models like habits)
+    Base.metadata.create_all(bind=engine)
     # Start the Redis WebSocket pub/sub listener in the background
     pubsub_task = asyncio.create_task(ws_manager.start_pubsub_listener())
     yield
@@ -48,6 +52,8 @@ app.include_router(tasks_router)
 app.include_router(schedule_router)
 app.include_router(notifications_router)
 app.include_router(integrations_router)
+app.include_router(habits_router)
+app.include_router(recommendations_router)
 
 
 @app.get("/")

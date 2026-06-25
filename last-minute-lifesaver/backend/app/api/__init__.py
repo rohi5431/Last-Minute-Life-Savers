@@ -4,6 +4,8 @@ from app.api.tasks import router as tasks_router
 from app.api.schedule import router as schedule_router
 from app.api.notifications import router as notifications_router
 from app.api.integrations import router as integrations_router
+from app.api.habits import router as habits_router
+from app.api.recommendations import router as recommendations_router
 
 __all__ = [
     "auth_router",
@@ -12,4 +14,6 @@ __all__ = [
     "schedule_router",
     "notifications_router",
     "integrations_router",
+    "habits_router",
+    "recommendations_router",
 ]

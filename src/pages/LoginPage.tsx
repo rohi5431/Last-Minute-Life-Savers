@@ -51,6 +51,20 @@ export default function LoginPage() {
     }
   }
 
+  const handleSocialLogin = async (provider: 'google' | 'github') => {
+    console.log(`Mocking social login via ${provider}`)
+    setLoading(true)
+    setApiError(null)
+    try {
+      await login('demo@lifesaver.app', 'demo1234')
+      setLoading(false)
+      navigate('/dashboard')
+    } catch (err: any) {
+      setLoading(false)
+      setApiError(`Social login failed: ${err.friendlyMessage || 'Could not verify demo credentials'}`)
+    }
+  }
+
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {loading && <LoadingOverlay />}
@@ -138,6 +152,7 @@ export default function LoginPage() {
                 type="button"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={() => handleSocialLogin('google')}
                 className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.05] border border-white/[0.08] text-white text-sm hover:bg-white/[0.1] transition-colors"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -152,6 +167,7 @@ export default function LoginPage() {
                 type="button"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={() => handleSocialLogin('github')}
                 className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.05] border border-white/[0.08] text-white text-sm hover:bg-white/[0.1] transition-colors"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

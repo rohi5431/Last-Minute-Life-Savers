@@ -7,6 +7,7 @@ from app.schemas.notification import NotificationResponse
 from app.schemas.integration import (
     CalendarEventOut, CalendarConnectionStatus, SyncResult, OptimizeResult, ConflictInfo,
 )
+from app.schemas.habit import HabitCreate, HabitResponse, HabitLogResponse
 
 __all__ = [
     "Token",
@@ -29,4 +30,7 @@ __all__ = [
     "SyncResult",
     "OptimizeResult",
     "ConflictInfo",
+    "HabitCreate",
+    "HabitResponse",
+    "HabitLogResponse",
 ]

@@ -4,7 +4,7 @@ import {
   LayoutDashboard, ListTodo, Calendar, BarChart3, Settings, LogOut,
   Zap, Plus, Sparkles, Clock, Bell, Search, ChevronDown, Zap as Bolt,
   Menu, X, Target, Inbox, CheckCircle2, Brain, RefreshCw, Loader2,
-  ExternalLink, CalendarOff, AlertTriangle, AlertCircle, MapPin
+  ExternalLink, CalendarOff, AlertTriangle, AlertCircle, MapPin, Award
 } from 'lucide-react'
 import AnimatedBackground from '../components/ui/AnimatedBackground'
 import GlassCard from '../components/ui/GlassCard'
@@ -18,11 +18,20 @@ import { useTasks } from '../context/TaskContext'
 import { useGoalPlan } from '../hooks/useGoals'
 import useWebSocket from '../hooks/useWebSocket'
 import { calendar as apiCalendar } from '../services/api'
+import HabitsTracker from '../components/HabitsTracker'
+import ProductivityTips from '../components/ProductivityTips'
+import VoiceAssistant from '../components/VoiceAssistant'
+import PanicMeter from '../components/PanicMeter'
+import AgentVisualizer from '../components/AgentVisualizer'
+import FocusRoom from '../components/FocusRoom'
 
 const sidebarItems = [
   { icon: LayoutDashboard, label: 'Dashboard', id: 'dashboard' },
   { icon: ListTodo, label: 'Tasks', id: 'tasks' },
   { icon: Calendar, label: 'Schedule', id: 'schedule' },
+  { icon: Award, label: 'Habits', id: 'habits' },
+  { icon: Zap, label: 'Focus Room', id: 'focus' },
+  { icon: Brain, label: 'AI Companion', id: 'coach' },
   { icon: BarChart3, label: 'Analytics', id: 'analytics' },
   { icon: Settings, label: 'Settings', id: 'settings' },
 ]
@@ -413,6 +422,13 @@ export default function DashboardPage() {
               </div>
 
               <div className="flex items-center gap-3">
+                {/* WebSocket Live Connection Indicator */}
+                <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-[10px] font-mono font-medium">
+                  <span className={`w-1.5 h-1.5 rounded-full ${wsConnected ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)] animate-pulse' : 'bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.5)]'} transition-colors`} />
+                  <span className={wsConnected ? 'text-emerald-400' : 'text-amber-400'}>
+                    {wsConnected ? 'LIVE' : 'DISCONNECTED'}
+                  </span>
+                </div>
                 <NotificationBell
                   notifications={mappedNotifications}
                   onMarkRead={handleMarkRead}
@@ -479,12 +495,14 @@ export default function DashboardPage() {
                       </div>
                     </form>
 
-                    {/* Planning Feedback */}
-                    {goalSuccess && (
-                      <div className="mt-4 flex items-center gap-2.5 text-sm text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 rounded-xl px-4 py-3 animate-fade-in">
-                        <Loader2 className="h-4 w-4 animate-spin shrink-0" />
-                        <span>{goalSuccess}</span>
-                      </div>
+                    {/* Planning Feedback & Agent Visualizer */}
+                    {(goalSuccess || planLoading) && (
+                      <AgentVisualizer
+                        planLoading={planLoading}
+                        plan={plan}
+                        error={planError}
+                        needsClarification={!!needsClarification}
+                      />
                     )}
 
                     {planError && (
@@ -843,6 +861,37 @@ export default function DashboardPage() {
                     )}
                   </div>
                 </GlassCard>
+              </motion.div>
+            )}
+            {activeTab === 'habits' && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+              >
+                <HabitsTracker />
+              </motion.div>
+            )}
+
+            {activeTab === 'focus' && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+              >
+                <FocusRoom />
+              </motion.div>
+            )}
+
+            {activeTab === 'coach' && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="space-y-6"
+              >
+                <PanicMeter conflictCount={calendarConflicts.length} />
+                <div className="grid grid-cols-1 gap-6">
+                  <VoiceAssistant />
+                  <ProductivityTips />
+                </div>
               </motion.div>
             )}
 
