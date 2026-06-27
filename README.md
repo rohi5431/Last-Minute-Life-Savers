@@ -488,32 +488,25 @@ Verify:
 ---
 ```md
 <p align="center">
-  <img src="YOUR_HACKATHON_LOGO_URL" width="300"/>
+ <img width="300" alt="image" src="https://github.com/user-attachments/assets/b4439212-94b9-4bd8-81ce-911c7793442d" />
 </p>
-
-# **VIBEzSHIP – Coding Ninjas × Google for Developers Hackathon 2026**
-
-## **Project Submission**
-
-### **Problem Statement**
-# **The Last-Minute Life Saver**
 
 ---
 
-### **Team Details**
+# 🏆 Hackathon Details
 
-**Participation Type:** Individual
+| **Hackathon Name** | **VIBEzSHIP – Coding Ninjas × Google for Developers Hackathon 2026** |
+|--------------------|----------------------------------------------------------------------|
+| **Participation Type** | Individual |
+| **Problem Statement** | The Last-Minute Life Saver |
+| **Project Name** | Last-Minute Life Saver |
+| **Developed By** | Rohit Kumar |
+| **Technology Track** | AI Productivity & Automation |
+| **Submission Type** | AI-Powered Web Application |
 
-**Participant:** Rohit Kumar
-
-**Project Name:** Last-Minute Life Saver
-
-**Hackathon:** VIBEzSHIP – Coding Ninjas × Google for Developers
-
-**Track:** AI Productivity & Automation
-
-**Built Using:** Google Gemini AI, FastAPI, React, PostgreSQL, Redis, Docker
+---
 ```
+
 ---
 
 
