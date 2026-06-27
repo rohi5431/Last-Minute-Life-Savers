@@ -1,451 +1,298 @@
 # 🚀 Last-Minute Life Saver
 
-> **Stop Planning. Start Executing.**
+### *AI-Powered Intelligent Productivity Companion*
 
-An AI-powered productivity companion that proactively helps users **plan, prioritize, schedule, and complete tasks before deadlines are missed**.
+<p align="center">
 
-Built for the **Google AI Hackathon**, this project transforms traditional reminder systems into an intelligent AI assistant capable of autonomous planning and real-time adaptation.
+**🏆 Built for Google AI Hackathon 2026**
 
----
+*"Turning Panic into Productivity with Gemini AI"*
 
-# 📌 Problem Statement
-
-Students, professionals, and entrepreneurs frequently miss important deadlines such as:
-
-- 📚 Assignments
-- 💼 Interviews
-- 📅 Meetings
-- 💳 Bill Payments
-- 📈 Project Milestones
-- 🎯 Personal Goals
-
-Traditional productivity applications rely on passive reminders that users often ignore.
-
-The challenge is to build an **AI-powered productivity companion** that moves beyond reminders and actively assists users in completing tasks before deadlines are missed.
+</p>
 
 ---
 
-# 💡 Solution
+## 🌍 The Problem
 
-Last-Minute Life Saver uses multiple AI agents to intelligently:
+Every day, millions of students, professionals, freelancers, and entrepreneurs struggle with one common challenge:
 
-- Understand user goals
-- Break large goals into smaller tasks
-- Prioritize work
-- Generate optimal schedules
-- Detect conflicts
-- Continuously adapt plans
-- Send proactive reminders
-- Reschedule missed work automatically
+> **Missing important deadlines despite using productivity applications.**
 
-Instead of asking
+Traditional reminder apps only notify users.
 
-> **"What should I do?"**
+They **don't understand priorities**, **don't create execution plans**, and **don't help users finish work**.
 
-the application tells the user
+As a result:
 
-> **"Here's your optimized plan to finish everything on time."**
+* 📚 Assignments remain incomplete.
+* 💼 Interviews are missed.
+* 📅 Meetings overlap.
+* 💳 Bills remain unpaid.
+* 📈 Projects are delayed.
+* 😓 Productivity decreases.
+* 😵 Stress increases.
 
 ---
 
-# 🎯 Key Features
+# 💡 Our Solution
 
-## 🧠 AI Goal Planner
+**Last-Minute Life Saver** is an AI-powered productivity platform that transforms a simple goal into an intelligent execution plan.
 
-Convert a single goal into actionable subtasks.
+Instead of passive reminders, our platform actively collaborates with users by:
 
-Example
+* 🧠 Understanding goals using Gemini AI
+* 📋 Breaking goals into actionable subtasks
+* ⚡ Prioritizing tasks intelligently
+* 📅 Building optimized schedules
+* 🔄 Continuously adapting plans
+* 🔔 Sending context-aware reminders
+* 📊 Tracking productivity
+* 🎯 Ensuring deadlines are achieved on time
 
-Goal:
+> **We don't remind users to work.**
+>
+> **We help them finish their work.**
 
-Build Hackathon Project
+---
+
+# 🚀 Why This Project is Different
+
+Unlike Todo applications, Last-Minute Life Saver functions as an **AI Productivity Operating System**.
+
+Instead of asking:
+
+> **"What task should I do next?"**
+
+the platform continuously answers:
+
+> **"Based on your deadlines, workload, available time, and progress, this is the best task to complete right now."**
+
+---
+
+# 🧠 Powered by Gemini AI
+
+Gemini acts as the project's intelligent brain.
+
+It is responsible for:
+
+* Goal understanding
+* Natural language interpretation
+* Task decomposition
+* Intelligent scheduling
+* Personalized productivity recommendations
+* Context-aware planning
+* Smart prioritization
+
+---
+
+# ✨ Core Features
+
+## 🤖 AI Goal Planner
+
+Convert a single goal into a complete execution roadmap.
+
+Example:
+
+Goal
+
+```
+Complete Hackathon Project
+```
 
 ↓
 
-Tasks
+AI Generates
 
-- Setup Backend
-- Design Database
-- Build API
-- Create Frontend
-- Testing
-- Deployment
-
----
-
-## ⚡ Intelligent Prioritization
-
-AI automatically scores every task based on:
-
-- Deadline
-- Importance
-- Estimated effort
-- Dependencies
-- User context
+```
+Research
+Design UI
+Develop Backend
+Integrate AI
+Testing
+Deployment
+Presentation
+Documentation
+```
 
 ---
 
-## 📅 Smart Scheduling
+## ⚡ Intelligent Priority Engine
 
-Automatically generates the best schedule.
+Every task receives an AI-generated priority score using:
 
-Supports:
-
-- Time blocking
-- Focus sessions
-- Free slot optimization
-- Daily planning
-
----
-
-## 🔄 Dynamic Re-Prioritization
-
-If the user misses a task,
-
-the system automatically:
-
-- Recalculates priorities
-- Updates schedule
-- Adjusts reminders
+* Deadline urgency
+* Estimated effort
+* Dependencies
+* User workload
+* Historical productivity
+* Current progress
 
 ---
 
-## 📆 Google Calendar Integration
+## 📅 AI Smart Scheduler
 
-Synchronizes with Google Calendar.
+Automatically creates an optimized daily schedule using:
 
-Features
-
-- Conflict detection
-- Automatic event creation
-- Schedule optimization
+* Time Blocking
+* Free Slot Detection
+* Deadline Optimization
+* Focus Sessions
+* Calendar Awareness
 
 ---
 
-## 🔔 Context-Aware Notifications
+## 🔄 Adaptive Replanning
 
-Receive reminders based on:
+If a task is missed,
 
-- Time remaining
-- User progress
-- Current workload
-- Upcoming meetings
+the AI automatically:
+
+* Recalculates priorities
+* Rebuilds schedules
+* Adjusts reminders
+* Prevents cascading delays
 
 ---
 
 ## 📊 Productivity Analytics
 
-Interactive dashboard showing
+Real-time dashboard including:
 
-- Completion rate
-- Productivity score
-- Daily progress
-- Weekly trends
-- Streaks
-- Missed deadlines
-
----
-
-## 📡 Real-Time Updates
-
-Uses WebSockets to provide
-
-- Instant notifications
-- Live dashboard updates
-- Task synchronization
+* Productivity Score
+* Daily Performance
+* Weekly Trends
+* Task Completion Rate
+* Focus Time
+* Active Streaks
+* High Priority Completion
 
 ---
 
-## 🤖 Multi-Agent AI System
+## 🔔 Smart Notifications
 
-The project uses multiple specialized AI agents.
+Instead of generic reminders,
 
-### Goal Clarifier Agent
+notifications are generated using context such as:
 
-Clarifies vague goals.
-
-### Planner Agent
-
-Breaks goals into subtasks.
-
-### Prioritizer Agent
-
-Assigns intelligent priorities.
-
-### Scheduler Agent
-
-Creates optimized schedules.
+* Remaining work
+* Deadline proximity
+* User progress
+* Calendar availability
 
 ---
 
-# ⚙️ AI Workflow
+## 📡 Real-Time Synchronization
 
-```text
-User Goal
-      │
-      ▼
-Goal Clarifier Agent
-      │
-      ▼
-Task Planner Agent
-      │
-      ▼
-Priority Scoring Agent
-      │
-      ▼
-Schedule Optimizer
-      │
-      ▼
-Calendar Conflict Detection
-      │
-      ▼
-Notification Engine
-      │
-      ▼
-Real-Time Dashboard
-      │
-      ▼
-Continuous Replanning
+* WebSocket updates
+* Live dashboard
+* Instant notifications
+* Multi-device synchronization
+
+---
+
+# 🏗 System Architecture
+
+```
+                User
+                  │
+                  ▼
+         React Frontend
+                  │
+                  ▼
+      FastAPI REST API Gateway
+                  │
+     ┌────────────┼────────────┐
+     ▼            ▼            ▼
+ Authentication  Planner     Analytics
+                  │
+                  ▼
+          AI Orchestrator
+                  │
+      ┌───────────┼────────────┐
+      ▼           ▼            ▼
+ Goal AI    Priority AI   Schedule AI
+                  │
+                  ▼
+            Gemini API
+                  │
+                  ▼
+ PostgreSQL • Redis • Celery
+                  │
+                  ▼
+     WebSocket Notification Engine
 ```
 
 ---
 
-# 🏗️ System Architecture
+# 🏆 Google Technologies Used
 
-```text
-React Frontend
-        │
-        ▼
-FastAPI Backend
-        │
- ┌──────┼───────────────┐
- ▼      ▼               ▼
-PostgreSQL         Redis Cache
-        │
-        ▼
-Celery Workers
-        │
-        ▼
-AI Orchestrator
-        │
- ┌──────┼───────────────┐
- ▼      ▼               ▼
-Planner
-Prioritizer
-Scheduler
-Clarifier
-        │
-        ▼
-Gemini / Groq / Ollama
-        │
-        ▼
-Google Calendar API
-        │
-        ▼
-WebSocket Notifications
-```
+| Technology          | Purpose                             |
+| ------------------- | ----------------------------------- |
+| Google Gemini API   | AI Planning & Reasoning             |
+| Google AI Studio    | Prompt Engineering & AI Development |
+| Google Cloud Run    | Application Deployment              |
+| Google Calendar API | Calendar Synchronization            |
+| Google OAuth        | Authentication                      |
+| Vertex AI (Future)  | Enterprise AI Deployment            |
 
 ---
 
-# 🛠 Tech Stack
+# 💥 Innovation
 
-## Frontend
+✅ AI-first productivity platform
 
-- React
-- Tailwind CSS
-- Framer Motion
-- React Router
-- Axios
-- Recharts
-- Lucide React
+✅ Dynamic execution planning
 
----
+✅ Adaptive task scheduling
 
-## Backend
+✅ Intelligent reprioritization
 
-- FastAPI
-- SQLAlchemy
-- Alembic
-- JWT Authentication
-- Pydantic
+✅ Context-aware reminders
+
+✅ Real-time analytics
+
+✅ Habit intelligence
+
+✅ AI productivity companion
 
 ---
 
-## AI
+# 🎯 Target Users
 
-- Google Gemini
-- LangChain
-- LangGraph
-- Groq
-- Ollama
-
----
-
-## Database
-
-- PostgreSQL
+* Students
+* Software Developers
+* Freelancers
+* Entrepreneurs
+* Researchers
+* Working Professionals
+* Startup Teams
 
 ---
 
-## Background Processing
+# 📈 Expected Impact
 
-- Celery
-- Redis
+✔ Reduce missed deadlines
 
----
+✔ Improve execution efficiency
 
-## Real-Time Communication
+✔ Reduce procrastination
 
-- WebSockets
+✔ Increase daily productivity
 
----
+✔ Better work-life balance
 
-## Integrations
-
-- Google Calendar API
+✔ Smarter decision making
 
 ---
 
-# 📂 Project Structure
+# 🚀 Our Vision
 
-```
-backend/
-frontend/
-docker-compose.yml
-README.md
-.env.example
-```
+> **"Every goal deserves an intelligent execution plan."**
+
+Last-Minute Life Saver aims to become the next generation AI productivity ecosystem where planning, scheduling, prioritization, and execution happen autonomously using Google Gemini AI.
 
 ---
 
-# 🚀 Getting Started
+## ⭐ Built with ❤️ using Google AI
 
-## Clone Repository
-
-```bash
-git clone https://github.com/YOUR_USERNAME/last-minute-life-saver.git
-```
-
----
-
-## Backend
-
-```bash
-cd backend
-
-python -m venv venv
-
-pip install -r requirements.txt
-
-uvicorn app.main:app --reload
-```
-
----
-
-## Frontend
-
-```bash
-cd frontend
-
-npm install
-
-npm run dev
-```
-
----
-
-# 🔑 Environment Variables
-
-```env
-DATABASE_URL=
-
-REDIS_URL=
-
-SECRET_KEY=
-
-GOOGLE_API_KEY=
-
-GROQ_API_KEY=
-
-GOOGLE_CLIENT_ID=
-
-GOOGLE_CLIENT_SECRET=
-
-JWT_SECRET_KEY=
-
-OPENAI_API_KEY=
-```
-
----
-
-# 🌟 Future Enhancements
-
-- Voice Assistant
-- AI Chat Productivity Coach
-- WhatsApp Notifications
-- Email Automation
-- Team Collaboration
-- Mobile App
-- Wearable Device Support
-- AI Habit Tracking
-- Offline Mode
-
----
-
-# 🎥 Demo
-
-Live Demo
-
-> Coming Soon
-
----
-
-# 📸 Screenshots
-
-- Landing Page
-- Login
-- Dashboard
-- Task Board
-- Analytics
-- Timeline
-- Calendar
-
----
-
-# 👨‍💻 Team
-
-**Rohit Kumar**
-
-Backend & AI Engineer
-
----
-
-# 📄 License
-
-MIT License
-
----
-
-# ❤️ Acknowledgements
-
-- Google AI
-- FastAPI
-- React
-- Tailwind CSS
-- Framer Motion
-- PostgreSQL
-- Redis
-- Celery
-- LangChain
-- Google Calendar API
-
----
-
-# ⭐ If you like this project
-
-Please give this repository a ⭐ on GitHub.
-
----
-
-## 🚀 Stop Planning. Start Executing.
-
+**"Stop Planning. Start Executing."**
