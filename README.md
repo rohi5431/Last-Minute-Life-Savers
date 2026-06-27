@@ -20,6 +20,17 @@
 </div>
 
 ---
+```md
+# 🌐 Live Deployment
+
+> 🚀 **Experience the live version of Last-Minute Life Saver**
+
+**🔗 Live Application:**  
+https://YOUR_DEPLOYMENT_LINK
+
+> Replace `YOUR_DEPLOYMENT_LINK` with your deployed application URL.
+```
+
 
 # 🌍 The Problem
 
@@ -30,6 +41,7 @@ Existing productivity applications rely on passive reminders that users often ig
 As responsibilities grow, priorities change, meetings overlap, and deadlines become increasingly difficult to manage.
 
 ---
+
 
 # 💡 Our Solution
 
