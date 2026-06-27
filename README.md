@@ -81,6 +81,8 @@ Specialized AI agents collaborate together.
 
 ---
 
+
+
 ## 📅 Smart Calendar Scheduling
 
 * Google Calendar integration
@@ -249,6 +251,9 @@ WebSocket Notifications
       ▼
 Analytics Dashboard
 ```
+# AI-Powered Multi-Agent System Architecture
+
+<img width="5500" height="8191" alt="AI Multi-Agent Planner-2026-06-27-000511" src="https://github.com/user-attachments/assets/b5786921-9c08-4fac-98fa-4f69b46d1d02" />
 
 ---
 
