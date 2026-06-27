@@ -1,298 +1,454 @@
 # 🚀 Last-Minute Life Saver
 
-### *AI-Powered Intelligent Productivity Companion*
+<div align="center">
 
-<p align="center">
+### **Turn panic into a plan in seconds.**
 
-**🏆 Built for Google AI Hackathon 2026**
-
-*"Turning Panic into Productivity with Gemini AI"*
-
-</p>
+*Drop a goal and a deadline — our AI decomposes it into prioritized tasks, intelligently schedules them around your calendar, autonomously adapts to changes, and keeps you on track with real-time guidance.*
 
 ---
 
-## 🌍 The Problem
+![Hackathon](https://img.shields.io/badge/Google%20AI-Hackathon-blue?style=for-the-badge\&logo=google)
+![React](https://img.shields.io/badge/Frontend-React%20%2B%20Vite-61DAFB?style=for-the-badge\&logo=react)
+![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge\&logo=fastapi)
+![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge\&logo=python)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-4169E1?style=for-the-badge\&logo=postgresql)
+![Redis](https://img.shields.io/badge/Redis-Queue%20%26%20Cache-DC382D?style=for-the-badge\&logo=redis)
+![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge\&logo=docker)
+![License](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)
 
-Every day, millions of students, professionals, freelancers, and entrepreneurs struggle with one common challenge:
+</div>
 
-> **Missing important deadlines despite using productivity applications.**
+---
 
-Traditional reminder apps only notify users.
+# 🌍 The Problem
 
-They **don't understand priorities**, **don't create execution plans**, and **don't help users finish work**.
+Every day, students, professionals, freelancers, and entrepreneurs struggle to meet important deadlines.
 
-As a result:
+Existing productivity applications rely on passive reminders that users often ignore. They notify users but rarely help them decide **what to do next**, **when to do it**, or **how to recover when plans fail**.
 
-* 📚 Assignments remain incomplete.
-* 💼 Interviews are missed.
-* 📅 Meetings overlap.
-* 💳 Bills remain unpaid.
-* 📈 Projects are delayed.
-* 😓 Productivity decreases.
-* 😵 Stress increases.
+As responsibilities grow, priorities change, meetings overlap, and deadlines become increasingly difficult to manage.
 
 ---
 
 # 💡 Our Solution
 
-**Last-Minute Life Saver** is an AI-powered productivity platform that transforms a simple goal into an intelligent execution plan.
+**Last-Minute Life Saver** is an AI-powered productivity companion that transforms a simple goal into a complete execution strategy.
 
-Instead of passive reminders, our platform actively collaborates with users by:
+Instead of acting as another reminder application, it behaves like an intelligent productivity partner capable of:
 
-* 🧠 Understanding goals using Gemini AI
-* 📋 Breaking goals into actionable subtasks
-* ⚡ Prioritizing tasks intelligently
-* 📅 Building optimized schedules
-* 🔄 Continuously adapting plans
-* 🔔 Sending context-aware reminders
-* 📊 Tracking productivity
-* 🎯 Ensuring deadlines are achieved on time
+* Understanding user intent
+* Breaking goals into actionable tasks
+* Prioritizing work dynamically
+* Building optimized schedules
+* Detecting conflicts automatically
+* Rescheduling missed work
+* Delivering live updates through WebSockets
+* Continuously adapting plans as deadlines approach
 
-> **We don't remind users to work.**
->
-> **We help them finish their work.**
+> **From Panic → Planning → Execution**
 
 ---
 
-# 🚀 Why This Project is Different
+# ✨ Features Showcase
 
-Unlike Todo applications, Last-Minute Life Saver functions as an **AI Productivity Operating System**.
+## 🤖 Goal → AI Plan
 
-Instead of asking:
+Simply enter:
 
-> **"What task should I do next?"**
+* Goal
+* Deadline
 
-the platform continuously answers:
+The Multi-Agent AI system automatically generates:
 
-> **"Based on your deadlines, workload, available time, and progress, this is the best task to complete right now."**
-
----
-
-# 🧠 Powered by Gemini AI
-
-Gemini acts as the project's intelligent brain.
-
-It is responsible for:
-
-* Goal understanding
-* Natural language interpretation
-* Task decomposition
-* Intelligent scheduling
-* Personalized productivity recommendations
-* Context-aware planning
-* Smart prioritization
+* Actionable subtasks
+* Estimated durations
+* Priorities
+* Daily execution schedule
 
 ---
 
-# ✨ Core Features
+## 🧠 Multi-Agent AI Workflow
 
-## 🤖 AI Goal Planner
+Specialized AI agents collaborate together.
 
-Convert a single goal into a complete execution roadmap.
-
-Example:
-
-Goal
-
-```
-Complete Hackathon Project
-```
-
-↓
-
-AI Generates
-
-```
-Research
-Design UI
-Develop Backend
-Integrate AI
-Testing
-Deployment
-Presentation
-Documentation
-```
+| Agent               | Responsibility                                                 |
+| ------------------- | -------------------------------------------------------------- |
+| 🎯 Clarifier Agent  | Understands and clarifies user goals                           |
+| 📋 Planner Agent    | Breaks goals into executable subtasks                          |
+| ⚡ Prioritizer Agent | Assigns urgency and importance scores                          |
+| 📅 Scheduler Agent  | Finds the optimal schedule based on deadlines and availability |
 
 ---
 
-## ⚡ Intelligent Priority Engine
+## 📅 Smart Calendar Scheduling
 
-Every task receives an AI-generated priority score using:
-
-* Deadline urgency
-* Estimated effort
-* Dependencies
-* User workload
-* Historical productivity
-* Current progress
+* Google Calendar integration
+* Working hour optimization
+* Automatic free-slot discovery
+* Time-block scheduling
+* Calendar conflict avoidance
 
 ---
 
-## 📅 AI Smart Scheduler
+## 🔄 Conflict Detection & Autonomous Rescheduling
 
-Automatically creates an optimized daily schedule using:
+When:
 
-* Time Blocking
-* Free Slot Detection
-* Deadline Optimization
-* Focus Sessions
-* Calendar Awareness
+* a meeting overlaps a task
+* a deadline changes
+* the user misses a task
+
+The AI automatically:
+
+* detects conflicts
+* recalculates priorities
+* rebuilds the schedule
+* updates every dependent task
+* notifies the user instantly
 
 ---
 
-## 🔄 Adaptive Replanning
+## ⚡ Real-Time Synchronization
 
-If a task is missed,
+Powered by FastAPI WebSockets.
 
-the AI automatically:
+Users instantly receive:
 
-* Recalculates priorities
-* Rebuilds schedules
-* Adjusts reminders
-* Prevents cascading delays
+* Task updates
+* Schedule changes
+* Priority adjustments
+* Notifications
+* Progress synchronization
+
+without refreshing the application.
+
+---
+
+## ⏳ Urgency Reprioritization
+
+Background Celery workers continuously monitor tasks.
+
+Every 10 minutes:
+
+* urgency scores are recalculated
+* priorities are updated
+* schedules are optimized
+* overdue work is redistributed
 
 ---
 
 ## 📊 Productivity Analytics
 
-Real-time dashboard including:
+Interactive dashboard including:
 
+* Completion Rate
 * Productivity Score
-* Daily Performance
-* Weekly Trends
-* Task Completion Rate
 * Focus Time
-* Active Streaks
-* High Priority Completion
+* Daily Progress
+* Weekly Trends
+* Streak Tracking
+* Priority Distribution
 
 ---
 
-## 🔔 Smart Notifications
+## 🎨 Premium Productivity Experience
 
-Instead of generic reminders,
+Modern AI-first interface featuring:
 
-notifications are generated using context such as:
-
-* Remaining work
-* Deadline proximity
-* User progress
-* Calendar availability
+* 🌌 Glassmorphism
+* ✨ Animated gradients
+* 🌙 Dark mode
+* 🎙 Floating Voice Assistant
+* 📈 Panic Meter
+* 🔥 Habit Tracker
+* 📅 Timeline View
+* 📋 Kanban Board
 
 ---
 
-## 📡 Real-Time Synchronization
+# 🛠 Technology Stack
 
-* WebSocket updates
-* Live dashboard
-* Instant notifications
-* Multi-device synchronization
+| Category             | Technologies                                                     |
+| -------------------- | ---------------------------------------------------------------- |
+| **Frontend**         | React, Vite, Tailwind CSS, Framer Motion, Recharts, Lucide React |
+| **Backend**          | FastAPI, SQLAlchemy, Alembic, Python-JOSE, Pydantic              |
+| **AI Orchestration** | LangChain, LangGraph, Groq API (Llama 3.3 70B), Ollama           |
+| **Real-Time**        | FastAPI WebSockets                                               |
+| **Background Jobs**  | Celery, Celery Beat                                              |
+| **Cache & Queue**    | Redis                                                            |
+| **Database**         | PostgreSQL                                                       |
+| **Integrations**     | Google Calendar API v3 (OAuth2)                                  |
+| **Infrastructure**   | Docker, Docker Compose                                           |
 
 ---
 
 # 🏗 System Architecture
 
+```text
+                     User
+                       │
+                       ▼
+              React Dashboard
+                       │
+                       ▼
+              FastAPI API Gateway
+                       │
+     ┌─────────────────┼─────────────────┐
+     ▼                 ▼                 ▼
+ Authentication      AI Engine       Analytics
+                       │
+         ┌─────────────┼──────────────┐
+         ▼             ▼              ▼
+  Clarifier      Planner Agent   Prioritizer
+                       │
+                       ▼
+               Scheduler Agent
+                       │
+                       ▼
+        Google Calendar Integration
+                       │
+                       ▼
+         PostgreSQL + Redis + Celery
+                       │
+                       ▼
+      WebSocket Notification Service
+                       │
+                       ▼
+            Live React Dashboard
 ```
-                User
-                  │
-                  ▼
-         React Frontend
-                  │
-                  ▼
-      FastAPI REST API Gateway
-                  │
-     ┌────────────┼────────────┐
-     ▼            ▼            ▼
- Authentication  Planner     Analytics
-                  │
-                  ▼
-          AI Orchestrator
-                  │
-      ┌───────────┼────────────┐
-      ▼           ▼            ▼
- Goal AI    Priority AI   Schedule AI
-                  │
-                  ▼
-            Gemini API
-                  │
-                  ▼
- PostgreSQL • Redis • Celery
-                  │
-                  ▼
-     WebSocket Notification Engine
+
+---
+
+# 🤖 Multi-Agent Workflow
+
+```text
+User Goal
+      │
+      ▼
+Clarifier Agent
+      │
+      ▼
+Planner Agent
+      │
+      ▼
+Priority Engine
+      │
+      ▼
+Scheduler Agent
+      │
+      ▼
+Calendar Conflict Detection
+      │
+      ▼
+Task Allocation
+      │
+      ▼
+WebSocket Notifications
+      │
+      ▼
+Analytics Dashboard
 ```
 
 ---
 
-# 🏆 Google Technologies Used
+# 📂 Repository Structure
 
-| Technology          | Purpose                             |
-| ------------------- | ----------------------------------- |
-| Google Gemini API   | AI Planning & Reasoning             |
-| Google AI Studio    | Prompt Engineering & AI Development |
-| Google Cloud Run    | Application Deployment              |
-| Google Calendar API | Calendar Synchronization            |
-| Google OAuth        | Authentication                      |
-| Vertex AI (Future)  | Enterprise AI Deployment            |
+```text
+backend/
+├── app/
+├── agents/
+├── api/
+├── models/
+├── schemas/
+├── workers/
+├── utils/
+├── scripts/
+├── alembic/
+└── tests/
 
----
+src/
+├── components/
+├── pages/
+├── hooks/
+├── context/
+├── services/
+└── assets/
 
-# 💥 Innovation
-
-✅ AI-first productivity platform
-
-✅ Dynamic execution planning
-
-✅ Adaptive task scheduling
-
-✅ Intelligent reprioritization
-
-✅ Context-aware reminders
-
-✅ Real-time analytics
-
-✅ Habit intelligence
-
-✅ AI productivity companion
+dist/
+docker-compose.yml
+README.md
+```
 
 ---
 
-# 🎯 Target Users
+# 🚀 Quick Start
 
-* Students
-* Software Developers
-* Freelancers
-* Entrepreneurs
-* Researchers
-* Working Professionals
-* Startup Teams
+## Prerequisites
+
+* Docker
+* Docker Compose
 
 ---
 
-# 📈 Expected Impact
+## 1️⃣ Configure Environment
 
-✔ Reduce missed deadlines
+Create:
 
-✔ Improve execution efficiency
+```text
+backend/.env
+```
 
-✔ Reduce procrastination
+Required variables:
 
-✔ Increase daily productivity
+```env
+GROQ_API_KEY=your_key
 
-✔ Better work-life balance
+SECRET_KEY=your_secret
 
-✔ Smarter decision making
+DATABASE_URL=postgresql://...
+
+REDIS_URL=redis://redis:6379/0
+
+GOOGLE_CLIENT_ID=
+
+GOOGLE_CLIENT_SECRET=
+```
 
 ---
 
-# 🚀 Our Vision
+## 2️⃣ Start Containers
 
-> **"Every goal deserves an intelligent execution plan."**
-
-Last-Minute Life Saver aims to become the next generation AI productivity ecosystem where planning, scheduling, prioritization, and execution happen autonomously using Google Gemini AI.
+```bash
+docker-compose up --build
+```
 
 ---
 
-## ⭐ Built with ❤️ using Google AI
+## 3️⃣ Run Database Migrations
 
-**"Stop Planning. Start Executing."**
+```bash
+docker-compose exec backend alembic upgrade head
+```
+
+---
+
+## 4️⃣ Seed Demo Data
+
+```bash
+docker-compose exec backend python scripts/seed_demo_data.py
+```
+
+---
+
+## 5️⃣ Open the Application
+
+| Service         | URL                        |
+| --------------- | -------------------------- |
+| 🌐 Frontend     | http://localhost:5173      |
+| ⚙ Backend API   | http://localhost:8000      |
+| 📚 Swagger Docs | http://localhost:8000/docs |
+
+---
+
+# 🧪 Demo Account
+
+To help hackathon judges explore the application immediately, a seeded demo account is included.
+
+| Email                                           | Password |
+| ----------------------------------------------- | -------- |
+| [demo@lifesaver.app](mailto:demo@lifesaver.app) | demo1234 |
+
+The demo account comes preloaded with:
+
+* ✅ Multiple Goals
+* ✅ Scheduled Tasks
+* ✅ AI Generated Plans
+* ✅ Notifications
+* ✅ Productivity Analytics
+* ✅ Calendar Events
+* ✅ Habits
+* ✅ Dashboard Statistics
+
+No setup is required.
+
+---
+
+# 🔧 Troubleshooting
+
+## Invalid AI API Key
+
+Verify:
+
+```env
+GROQ_API_KEY
+```
+
+Restart Docker after updating.
+
+---
+
+## PostgreSQL Connection Failed
+
+Check:
+
+```bash
+docker-compose ps
+```
+
+Ensure the PostgreSQL container is running.
+
+---
+
+## Redis Not Connected
+
+Restart Redis:
+
+```bash
+docker-compose restart redis
+```
+
+---
+
+## Port Already in Use
+
+Check whether ports **5173**, **8000**, **5432**, or **6379** are occupied and stop the conflicting process, or update the exposed ports in `docker-compose.yml`.
+
+---
+
+## WebSocket Not Connecting
+
+Verify:
+
+* Backend is running
+* Redis is available
+* Browser Console has no CORS errors
+
+---
+
+# 🌟 Future Roadmap
+
+* 🎤 Voice Commands
+* 🤖 AI Productivity Coach
+* 📱 Mobile Application
+* 👥 Team Collaboration
+* 📧 Gmail Integration
+* 📞 WhatsApp Notifications
+* ⌚ Smartwatch Support
+* 🌍 Multi-language AI Assistant
+
+---
+
+# 👨‍💻 Team
+
+**Rohit Kumar**
+
+Backend • AI • Full Stack Development
+
+---
+
+# ❤️ Built for Google AI Hackathon
+
+> **Stop Planning. Start Executing.**
+
+Transform goals into intelligent execution plans with AI.
