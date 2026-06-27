@@ -487,13 +487,11 @@ Verify:
 
 ---
 
+# 🏆 Hackathon Details
 <p align="center">
  <img width="300" alt="image" src="https://github.com/user-attachments/assets/b4439212-94b9-4bd8-81ce-911c7793442d" />
 </p>
-
 ---
-
-# 🏆 Hackathon Details
 
 | **Hackathon Name** | **VIBEzSHIP – Coding Ninjas × Google for Developers Hackathon 2026** |
 |--------------------|----------------------------------------------------------------------|
