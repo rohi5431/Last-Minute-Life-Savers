@@ -486,6 +486,7 @@ Verify:
 * 🌍 Multi-language AI Assistant
 
 ---
+```md
 <p align="center">
   <img src="YOUR_HACKATHON_LOGO_URL" width="300"/>
 </p>
@@ -512,7 +513,7 @@ Verify:
 **Track:** AI Productivity & Automation
 
 **Built Using:** Google Gemini AI, FastAPI, React, PostgreSQL, Redis, Docker
-
+```
 ---
 
 
