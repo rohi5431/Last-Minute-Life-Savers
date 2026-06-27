@@ -384,6 +384,28 @@ No setup is required.
 
 ---
 
+# 📸 Screenshots
+| SignUp Page  | Login Page |
+| <img width="450" alt="image" src="https://github.com/user-attachments/assets/a577e2b8-f9ad-4899-bb5f-d318c95547f8" />| | <img width="450" alt="image" src="https://github.com/user-attachments/assets/667ee3bf-6417-44f9-b542-0fc09ef8f0f7" />|
+|--------------|-----------|
+| Landing Page | Dashboard |
+|--------------|-----------|
+|<img width="1885" height="857" alt="image" src="https://github.com/user-attachments/assets/e0293bb8-97f5-494b-8e88-d60eedb537be" /> | | <img width="450" alt="image" src="https://github.com/user-attachments/assets/d7c82df3-566d-4825-8b5e-dacf3cfa693e" />|
+|--------------|-----------|
+ | <img width="450" alt="image" src="https://github.com/user-attachments/assets/5309713f-cefa-4933-bff8-9a794f15e520" />| |<img width="450" alt="image" src="https://github.com/user-attachments/assets/09f76697-6f2e-4783-8054-43219c0d37ae" />|
+
+| Task Board | Analytics |
+|-------------|-----------|
+| <img width="450" alt="image" src="https://github.com/user-attachments/assets/308ebb95-6bee-46ae-80b4-5ec79f25c5d7" />| <img width="450" alt="image" src="https://github.com/user-attachments/assets/8eb2d378-6560-4064-b814-4b3d6ef478a7" />|
+
+| AI Planner | Scheduler |
+|-------------|-----------|
+| <img width="450" alt="image" src="https://github.com/user-attachments/assets/43ea3e3e-7695-4e33-9a89-becc7734dbb9" />| <img width="450" alt="image" src="https://github.com/user-attachments/assets/88851b4a-6f69-4054-b797-ae38f4cb95b0" />|
+
+| Habit Tracker | Focus Room |
+|----------------|------------|
+|<img width="450" alt="image" src="https://github.com/user-attachments/assets/f13690b7-1e70-45a0-9da5-1e242812f815" />| <img width="450" alt="image" src="https://github.com/user-attachments/assets/0c42a9ad-7b19-4059-ac52-b842037c9156" />|
+
 # 🔧 Troubleshooting
 
 ## Invalid AI API Key
