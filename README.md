@@ -556,9 +556,17 @@ Gemini Generates:
 Backend • AI • Full Stack Development
 
 ---
-
 # ❤️ Built for Google AI Hackathon
 
 > **Stop Planning. Start Executing.**
 
 Transform goals into intelligent execution plans with AI.
+
+---
+
+## 💬 Support
+
+If you like this project, please ⭐ the repository.
+
+It motivates us to build more AI-powered applications.
+
