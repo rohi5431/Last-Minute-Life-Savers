@@ -20,7 +20,7 @@
 </div>
 
 ---
-```md
+
 # 🌐 Live Deployment
 
 > 🚀 **Experience the live version of Last-Minute Life Saver**
@@ -29,7 +29,7 @@
 https://YOUR_DEPLOYMENT_LINK
 
 > Replace `YOUR_DEPLOYMENT_LINK` with your deployed application URL.
-```
+
 
 
 # 🌍 The Problem
