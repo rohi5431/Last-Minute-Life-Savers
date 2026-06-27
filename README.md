@@ -27,8 +27,6 @@
 **🔗 Live Application:**  
  https://ais-pre-erc7tgogcr3tnmkqtx67nx-237155477162.asia-southeast1.run.app
 
-> Replace `YOUR_DEPLOYMENT_LINK` with your deployed application URL.
-
 
 
 # 🌍 The Problem
