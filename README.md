@@ -497,6 +497,24 @@ Verify:
 * Browser Console has no CORS errors
 
 ---
+## 🤖 Example AI Prompt
+
+Goal:
+Complete Hackathon Project
+
+Deadline:
+29 June 2026
+
+Gemini Generates:
+
+• Research
+• Backend
+• Frontend
+• Testing
+• Documentation
+• Deployment
+
+---
 
 # 🌟 Future Roadmap
 
