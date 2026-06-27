@@ -15,7 +15,6 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-4169E1?style=for-the-badge\&logo=postgresql)
 ![Redis](https://img.shields.io/badge/Redis-Queue%20%26%20Cache-DC382D?style=for-the-badge\&logo=redis)
 ![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge\&logo=docker)
-![License](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)
 
 </div>
 
