@@ -486,12 +486,11 @@ Verify:
 * 🌍 Multi-language AI Assistant
 
 ---
+<p align="center">
+<img width="282" height="87" alt="image" src="https://github.com/user-attachments/assets/a4b0e36b-d217-4122-86d1-b24c88e7f35d" />
+</p>
 
 # 🏆 Hackathon Details
-<p align="center">
- <img width="300" alt="image" src="https://github.com/user-attachments/assets/b4439212-94b9-4bd8-81ce-911c7793442d" />
-</p>
----
 
 | **Hackathon Name** | **VIBEzSHIP – Coding Ninjas × Google for Developers Hackathon 2026** |
 |--------------------|----------------------------------------------------------------------|
