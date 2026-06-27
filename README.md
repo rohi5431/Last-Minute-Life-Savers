@@ -255,8 +255,8 @@ Analytics Dashboard
   <img
     src="https://github.com/user-attachments/assets/b5786921-9c08-4fac-98fa-4f69b46d1d02"
     alt="AI-Powered Multi-Agent System Architecture"
-    width="650"
-    height="680"
+    width="700"
+    height="700"
   />
 
 
