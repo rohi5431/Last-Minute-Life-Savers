@@ -288,13 +288,7 @@ WebSocket Notifications
 Analytics Dashboard
 ```
 # AI-Powered Multi-Agent System Architecture
-  <img
-    src="https://github.com/user-attachments/assets/b5786921-9c08-4fac-98fa-4f69b46d1d02"
-    alt="AI-Powered Multi-Agent System Architecture"
-    width="700"
-    height="700"
-  />
-
+  <img width="700" height="700" alt="image" src="https://github.com/user-attachments/assets/9ed2c84a-f7df-4327-b417-fab8b0337dcc" />
 
 ---
 
