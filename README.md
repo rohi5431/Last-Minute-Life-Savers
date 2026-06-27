@@ -25,7 +25,7 @@
 > 🚀 **Experience the live version of Last-Minute Life Saver**
 
 **🔗 Live Application:**  
-https://YOUR_DEPLOYMENT_LINK
+ https://ais-pre-erc7tgogcr3tnmkqtx67nx-237155477162.asia-southeast1.run.app
 
 > Replace `YOUR_DEPLOYMENT_LINK` with your deployed application URL.
 
