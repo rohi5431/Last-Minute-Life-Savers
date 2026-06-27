@@ -79,6 +79,18 @@ The Multi-Agent AI system automatically generates:
 
 ---
 
+# Google Technologies Used
+
+| Technology | Usage |
+|------------|-------|
+| Google Gemini API | AI Planning |
+| Google AI Studio | Prompt Engineering |
+| Google Calendar API | Calendar Integration |
+| Google Cloud Run | Deployment |
+| Google OAuth | Authentication |
+
+---
+
 ## 🧠 Multi-Agent AI Workflow
 
 Specialized AI agents collaborate together.
