@@ -486,6 +486,36 @@ Verify:
 * 🌍 Multi-language AI Assistant
 
 ---
+<p align="center">
+  <img src="YOUR_HACKATHON_LOGO_URL" width="300"/>
+</p>
+
+# **VIBEzSHIP – Coding Ninjas × Google for Developers Hackathon 2026**
+
+## **Project Submission**
+
+### **Problem Statement**
+# **The Last-Minute Life Saver**
+
+---
+
+### **Team Details**
+
+**Participation Type:** Individual
+
+**Participant:** Rohit Kumar
+
+**Project Name:** Last-Minute Life Saver
+
+**Hackathon:** VIBEzSHIP – Coding Ninjas × Google for Developers
+
+**Track:** AI Productivity & Automation
+
+**Built Using:** Google Gemini AI, FastAPI, React, PostgreSQL, Redis, Docker
+
+---
+
+
 
 # 👨‍💻 Team
 
