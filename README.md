@@ -1,4 +1,4 @@
-# 🚀 Last-Minute Life Saver
+## 🚀 Last-Minute Life Saver
 
 <div align="center">
 
@@ -20,7 +20,7 @@
 
 ---
 
-# 🌐 Live Deployment
+## 🌐 Live Deployment
 
 > 🚀 **Experience the live version of Last-Minute Life Saver**
 
@@ -30,7 +30,7 @@
 **🔗 Google Docs:**
 https://docs.google.com/document/d/1S4JAQTqc-QPmDkme5UmJ0Bl3R6Aidb_-4CQoTa3e8to/edit?tab=t.0#heading=h.61usyoxxscbo
 
-# 🌍 The Problem
+## 🌍 The Problem
 
 Every day, students, professionals, freelancers, and entrepreneurs struggle to meet important deadlines.
 
@@ -41,7 +41,7 @@ As responsibilities grow, priorities change, meetings overlap, and deadlines bec
 ---
 
 
-# 💡 Our Solution
+## 💡 Our Solution
 
 **Last-Minute Life Saver** is an AI-powered productivity companion that transforms a simple goal into a complete execution strategy.
 
@@ -60,7 +60,7 @@ Instead of acting as another reminder application, it behaves like an intelligen
 
 ---
 
-# ✨ Features Showcase
+## ✨ Features Showcase
 
 ## 🤖 Goal → AI Plan
 
@@ -204,7 +204,7 @@ Modern AI-first interface featuring:
 
 ---
 
-# 🛠 Technology Stack
+## 🛠 Technology Stack
 
 | Category             | Technologies                                                     |
 | -------------------- | ---------------------------------------------------------------- |
@@ -220,7 +220,7 @@ Modern AI-first interface featuring:
 
 ---
 
-# 🏗 System Architecture
+## 🏗 System Architecture
 
 ```text
                      User
@@ -257,7 +257,7 @@ Modern AI-first interface featuring:
 
 ---
 
-# 🤖 Multi-Agent Workflow
+## 🤖 Multi-Agent Workflow
 
 ```text
 User Goal
@@ -286,12 +286,12 @@ WebSocket Notifications
       ▼
 Analytics Dashboard
 ```
-# AI-Powered Multi-Agent System Architecture
+## AI-Powered Multi-Agent System Architecture
   <img width="700" height="700" alt="image" src="https://github.com/user-attachments/assets/9ed2c84a-f7df-4327-b417-fab8b0337dcc" />
 
 ---
 
-# 📂 Repository Structure
+## 📂 Repository Structure
 
 ```text
 backend/
@@ -390,7 +390,7 @@ docker-compose exec backend python scripts/seed_demo_data.py
 
 ---
 
-# 🧪 Demo Account
+## 🧪 Demo Account
 
 To help hackathon judges explore the application immediately, a seeded demo account is included.
 
@@ -413,7 +413,7 @@ No setup is required.
 
 ---
 
-# 📸 Screenshots
+## 📸 Screenshots
 
 | Sign Up Page | Login Page |
 |--------------|------------|
@@ -509,7 +509,7 @@ Gemini Generates:
 
 ---
 
-# 🌟 Future Roadmap
+## 🌟 Future Roadmap
 
 * 🎤 Voice Commands
 * 🤖 AI Productivity Coach
@@ -525,7 +525,7 @@ Gemini Generates:
 <img width="300" alt="image" src="https://github.com/user-attachments/assets/a4b0e36b-d217-4122-86d1-b24c88e7f35d" />
 </p>
 
-# 🏆 Hackathon Details
+## 🏆 Hackathon Details
 
 | **Hackathon Name** | **VIBEzSHIP – Coding Ninjas × Google for Developers Hackathon 2026** |
 |--------------------|----------------------------------------------------------------------|
@@ -542,14 +542,14 @@ Gemini Generates:
 
 
 
-# 👨‍💻 Team
+## 👨‍💻 Team
 
 **Rohit Kumar**
 
 Backend • AI • Full Stack Development
 
 ---
-# ❤️ Built for Google AI Hackathon
+## ❤️ Built for Google AI Hackathon
 
 > **Stop Planning. Start Executing.**
 
