@@ -321,7 +321,7 @@ README.md
 
 ---
 
-# 🚀 Quick Start
+## 🚀 Quick Start
 
 ## Prerequisites
 
@@ -439,7 +439,7 @@ No setup is required.
 |----------------|------------|
 |<img width="450" alt="image" src="https://github.com/user-attachments/assets/f13690b7-1e70-45a0-9da5-1e242812f815" />| <img width="450" alt="image" src="https://github.com/user-attachments/assets/0c42a9ad-7b19-4059-ac52-b842037c9156" />|
 
-# 🔧 Troubleshooting
+## 🔧 Troubleshooting
 
 ## Invalid AI API Key
 
