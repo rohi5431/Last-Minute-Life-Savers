@@ -27,9 +27,6 @@
 **🔗 Live Application:**  
  https://ais-pre-erc7tgogcr3tnmkqtx67nx-237155477162.asia-southeast1.run.app
 
-**🔗 Google Docs:**
-https://docs.google.com/document/d/1S4JAQTqc-QPmDkme5UmJ0Bl3R6Aidb_-4CQoTa3e8to/edit?tab=t.0#heading=h.61usyoxxscbo
-
 ## 🌍 The Problem
 
 Every day, students, professionals, freelancers, and entrepreneurs struggle to meet important deadlines.
